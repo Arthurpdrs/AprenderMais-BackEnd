@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AprenderMaisApplication<AprenderMais>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.AprenderMais.AprenderMaisApplication",
+            "projectName": "AprenderMais",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
