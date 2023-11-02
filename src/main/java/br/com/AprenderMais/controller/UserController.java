@@ -1,8 +1,10 @@
-package br.com.AprenderMais.Controller;
+package br.com.AprenderMais.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Contole {
+public class UserController {
+	
+	
     
 }
