@@ -5,6 +5,7 @@ import java.io.Serializable;
 import br.com.AprenderMais.model.Admin;
 import br.com.AprenderMais.model.Professor;
 import br.com.AprenderMais.model.Student;
+import br.com.AprenderMais.model.User;
 import br.com.AprenderMais.model.UserType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,31 +31,71 @@ public class UserDTO implements Serializable{
 	private Professor professor;
 	private Student student;
 	
-	public UserDTO(String email, String password, String name, String telephone, UserType userType) {
+	public UserDTO(User user) {
 		
-		this.email = email;
-		this.password = password;
-		this.name = name;
-		this.telephone = telephone;
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.name = user.getName();
+		this.telephone = user.getTelephone();
 		
 		switch (userType) {
         case STUDENT:
-        	this.userType = userType;
+        	this.userType = user.getUserType();
             this.student = new Student();
             break;
         case PROFESSOR:
-        	this.userType = userType;
+        	this.userType = user.getUserType();
             this.professor = new Professor();
             this.student = new Student();
             break;
         case ADMIN:
-        	this.userType = userType;
+        	this.userType = user.getUserType();
             this.admin = new Admin();
             break;
 		}
 	}
 	
 	public UserDTO() {}	
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
 	
 
 }
