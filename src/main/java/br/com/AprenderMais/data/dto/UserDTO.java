@@ -1,7 +1,11 @@
-package br.com.AprenderMais.model;
+package br.com.AprenderMais.data.dto;
 
 import java.io.Serializable;
 
+import br.com.AprenderMais.model.Admin;
+import br.com.AprenderMais.model.Professor;
+import br.com.AprenderMais.model.Student;
+import br.com.AprenderMais.model.UserType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,33 +16,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-@Entity
-@Table(name = "user")
-public class User implements Serializable{
+
+public class UserDTO implements Serializable{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;
-	@Column(nullable = false, length = 80)
 	private String email;
-	@Column(nullable = false, length = 16)
 	private String password;
-	@Column(nullable = false, length = 100)
 	private String name;
-	@Column(nullable = false, length = 11)
 	private String telephone;
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
 	private UserType userType;
-	@Transient
 	private Admin admin;
-	@Transient
 	private Professor professor;
-	@Transient
 	private Student student;
 	
-	
-	public User(String email, String password, String name, String telephone, UserType userType) {
+	public UserDTO(String email, String password, String name, String telephone, UserType userType) {
 		
 		this.email = email;
 		this.password = password;
@@ -62,7 +54,7 @@ public class User implements Serializable{
 		}
 	}
 	
-	public User() {}	
+	public UserDTO() {}	
 	
 
 }
