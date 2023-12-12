@@ -12,6 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "user")
@@ -20,11 +23,13 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Email
 	@Column(nullable = false, length = 80)
 	private String email;
 	@Column(nullable = false, length = 16)
 	private String password;
 	@Column(nullable = false, length = 100)
+	@Size(min = 3, max = 100, message = "Usuário não pode conter menos de 3 caracteres")
 	private String name;
 	@Column(nullable = false, length = 11)
 	private String telephone;
