@@ -44,6 +44,12 @@ public class UserService {
 		
 		return dto;
 	}
+
+	//public UserDTO createUser(UserDTO userDTO){
+	//	User newUser = convertUserDTOtoUser(userDTO);
+	//	User savedUser = userRepository.save(newUser);
+	//	return new UserDTO(savedUser);
+//	}
 	
 	public UserDTO update(UserDTO user) {
 		

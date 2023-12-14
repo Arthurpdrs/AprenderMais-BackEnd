@@ -32,11 +32,13 @@ public class UserDTO implements Serializable{
 	private Student student;
 	
 	public UserDTO(User user) {
-		
+
+		this.id = user.getId();
 		this.email = user.getEmail();
 		this.password = user.getPassword();
 		this.name = user.getName();
 		this.telephone = user.getTelephone();
+		this.userType = user.getUserType();
 		
 		switch (userType) {
         case STUDENT:
