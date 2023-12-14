@@ -53,7 +53,7 @@ public class UserService {
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 		
 		entity.setName(user.getName());
-		entity.setTelephone(user.getTelephone());
+		// entity.setTelephone(user.getTelephone());
 		//VERIFICAR A POSSIBLIDADE DE ALTERAR A SENHA AQUI.
 		
 		var dto = DozerMapperConvert.parseObject(userRepository.save(entity), UserDTO.class);
