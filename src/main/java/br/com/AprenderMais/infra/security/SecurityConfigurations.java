@@ -33,7 +33,6 @@ public class SecurityConfigurations {
 	                    .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("STUDENT") // Permite que usuários com a função "STUDENT" busquem cursos.
 	                    .requestMatchers(HttpMethod.GET, "/api/professors").hasRole("STUDENT") // Permite que usuários com a função "STUDENT" busquem professores.
 	            )
-	            .cors(cors -> {})
 	            .build();
 	}
 	

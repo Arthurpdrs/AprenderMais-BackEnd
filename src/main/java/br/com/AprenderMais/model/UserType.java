@@ -14,4 +14,13 @@ public enum UserType {
         return role;
     }
 
+    public static UserType fromString(String role) {
+        for (UserType userType : UserType.values()) {
+            if (userType.role.equalsIgnoreCase(role)) {
+                return userType;
+            }
+        }
+        throw new IllegalArgumentException("Invalid UserType: " + role);
+    }
+
 }

@@ -45,7 +45,7 @@ public class User implements Serializable, UserDetails{
 	@Column(nullable = false, length = 16)
 	private String password;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 100, unique = true)
 	@Size(min = 3, max = 100, message = "Usuário não pode conter menos de 3 caracteres")
 	private String name;
 
@@ -63,7 +63,6 @@ public class User implements Serializable, UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-	
 		if(this.role == UserType.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_PROFESSOR"), new SimpleGrantedAuthority("ROLE_STUDENT"));
         else if(this.role == UserType.PROFESSOR) return List.of(new SimpleGrantedAuthority("ROLE_PROFESSOR"), new SimpleGrantedAuthority("ROLE_STUDENT"));
         else return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
