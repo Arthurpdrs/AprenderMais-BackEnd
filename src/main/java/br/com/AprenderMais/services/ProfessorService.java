@@ -6,6 +6,7 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.AprenderMais.data.dto.ProfessorDTO;
 import br.com.AprenderMais.data.dto.UserDTO;
 import br.com.AprenderMais.exceptions.ResourceNotFoundException;
 import br.com.AprenderMais.mapper.DozerMapperConvert;
@@ -21,7 +22,7 @@ public class ProfessorService {
 	@Autowired
 	ProfessorRepository professorRepository;
 	
-	public List<UserDTO> findAll(){
+	public List<ProfessorDTO> findAll(){
 		
 		logger.info("Finding all users!");
 		
@@ -53,7 +54,6 @@ public class ProfessorService {
 		var entity = professorRepository.findById(professor.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 		
-		entity.setName(professor.getName());
 		entity.setOccupationArea(professor.getOccupationArea);
 		entity.setFormationDegree(professor.getFormationDegree);
 		entity.setBiography(professor.getBiography);
