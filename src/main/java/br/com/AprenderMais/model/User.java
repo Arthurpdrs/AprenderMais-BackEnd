@@ -38,20 +38,21 @@ public class User implements Serializable, UserDetails{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false, length = 100, unique = true)
+	@Size(min = 2, max = 100, message = "Usuário não pode conter menos de 3 caracteres")
+	private String name;
+
 	// @Email
 	// @Column(nullable = false, length = 80)
 	// private String email;
 
-	@Column(nullable = false, length = 16)
+	@Column(nullable = false, length = 200)
 	private String password;
-	
-	@Column(nullable = false, length = 100, unique = true)
-	@Size(min = 3, max = 100, message = "Usuário não pode conter menos de 3 caracteres")
-	private String name;
 
 	// @Column(nullable = false, length = 11)
 	// private String telephone;
-	
+
+	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private UserType role;
 
@@ -72,6 +73,11 @@ public class User implements Serializable, UserDetails{
 	public String getUsername() {
 		return this.name;
 	}
+
+	@Override
+    public String getPassword() {
+        return this.password;
+    }
 
 	@Override
 	public boolean isAccountNonExpired() {

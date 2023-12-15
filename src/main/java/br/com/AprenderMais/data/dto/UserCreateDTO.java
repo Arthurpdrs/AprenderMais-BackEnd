@@ -2,10 +2,12 @@ package br.com.AprenderMais.data.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class UserCreateDTO {
 
     private String name;
@@ -19,7 +21,5 @@ public class UserCreateDTO {
         this.password = password;
         this.role = role;
     }
-
-    
     
 }

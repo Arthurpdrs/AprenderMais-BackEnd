@@ -9,18 +9,20 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.AprenderMais.data.dto.AuthenticationDTO;
+import br.com.AprenderMais.data.dto.LoginResponseDTO;
 import br.com.AprenderMais.data.dto.RegisterDTO;
 import br.com.AprenderMais.data.dto.UserCreateDTO;
 import br.com.AprenderMais.data.dto.UserDTO;
 import br.com.AprenderMais.exceptions.RequiredObjectIsNullException;
+import br.com.AprenderMais.infra.security.TokenService;
 import br.com.AprenderMais.mapper.DozerMapperConvert;
 import br.com.AprenderMais.model.User;
 import br.com.AprenderMais.model.UserType;
 import br.com.AprenderMais.repositories.UserRepository;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
@@ -33,17 +35,22 @@ public class AuthenticationController {
 	@Autowired
 	private UserRepository repository;
 
+	@Autowired
+	TokenService tokenService;
+
 	@PostMapping("/login")
-	public ResponseEntity login(@RequestBody AuthenticationDTO data) {
-		var usernamePassword = new UsernamePasswordAuthenticationToken(data.userName(), data.password());
+	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
+		var usernamePassword = new UsernamePasswordAuthenticationToken(data.name(), data.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 
-		return ResponseEntity.ok().build();
+		var token = tokenService.generateToken((User) auth.getPrincipal());
+
+
+		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
 
 	@PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserCreateDTO data) {
-		 System.out.println("Dados recebidos: " + data.getName() + "- "+ data.getPassword() +"- "+ data.getRole());
         Optional<User> isAlreadyCreated = repository.findByNameUser(data.getName());
         if(isAlreadyCreated.isPresent()){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("");
