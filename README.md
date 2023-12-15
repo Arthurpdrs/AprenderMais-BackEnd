@@ -1,6 +1,6 @@
 # DSWII-Project-BackEnd
 
-<img src="http://img.shields.io/static/v1?label=STATUS&message=%20EM-ANDAMENTO&color=yellow&style=for-the-badge"/>
+<img src="http://img.shields.io/static/v1?label=STATUS&message=%20CONCLUÍDO&color=GREEN&style=for-the-badge"/>
 
 # Aprender Mais
 
@@ -13,9 +13,16 @@ O Aprender Mais é uma iniciativa desenvolvida como parte da disciplina de Desen
 - **Empoderar Educadores Voluntários**: Capacitar indivíduos a compartilhar conhecimento e habilidades como educadores voluntários, alcançando um público mais amplo.
 
 ## Tecnologias Utilizadas
-- Spring Boot
+- Java 17
+- Git e Github
+- Spring Boot 3
+- Visual Studio Code
+- Thunder Client
+- Insomnia
 - Hibernate
 - MySQL
+- MySQL Workbench
+- JWT (Json Web Token)
 - Spring Security
 - Lombok
 - Auth0
