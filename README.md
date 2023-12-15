@@ -1,6 +1,6 @@
 # DSWII-Project-BackEnd
 
-<img src="http://img.shields.io/static/v1?label=STATUS&message=%20CONCLUÍDO&color=GREEN&style=for-the-badge"/>
+<img src="http://img.shields.io/static/v1?label=STATUS&message=%20CONCLUIDO&color=GREEN&style=for-the-badge"/>
 
 # Aprender Mais
 
