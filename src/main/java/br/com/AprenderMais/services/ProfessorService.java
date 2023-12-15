@@ -10,7 +10,7 @@ import br.com.AprenderMais.data.dto.ProfessorDTO;
 import br.com.AprenderMais.data.dto.UserDTO;
 import br.com.AprenderMais.exceptions.ResourceNotFoundException;
 import br.com.AprenderMais.mapper.DozerMapperConvert;
-import br.com.AprenderMais.model.User;
+import br.com.AprenderMais.model.Professor;
 import br.com.AprenderMais.repositories.ProfessorRepository;
 import br.com.AprenderMais.repositories.UserRepository;
 
@@ -41,8 +41,8 @@ public class ProfessorService {
 	public ProfessorDTO create(ProfessorDTO professor) {
 		logger.info("Creating one user!");
 		
-		var entity = DozerMapperConvert.parseObject(professor, ProfessorDTO.class);
-		var dto = DozerMapperConvert.parseObject(professorRepository.save(entity), UserDTO.class);
+		var entity = DozerMapperConvert.parseObject(professor, Professor.class);
+		var dto = DozerMapperConvert.parseObject(professorRepository.save(entity), ProfessorDTO.class);
 		
 		return dto;
 	}
@@ -54,9 +54,9 @@ public class ProfessorService {
 		var entity = professorRepository.findById(professor.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 		
-		entity.setOccupationArea(professor.getOccupationArea);
-		entity.setFormationDegree(professor.getFormationDegree);
-		entity.setBiography(professor.getBiography);
+		entity.setOccupationArea(professor.getOccupationArea());
+		entity.setFormationDegree(professor.getFormationDegree());
+		entity.setBiography(professor.getBiography());
 		
 		var dto = DozerMapperConvert.parseObject(professorRepository.save(entity), ProfessorDTO.class);
 		return dto;

@@ -18,6 +18,7 @@ import br.com.AprenderMais.data.dto.UserCreateDTO;
 import br.com.AprenderMais.infra.security.TokenService;
 import br.com.AprenderMais.model.User;
 import br.com.AprenderMais.model.UserType;
+import br.com.AprenderMais.repositories.ProfessorRepository;
 import br.com.AprenderMais.repositories.UserRepository;
 import jakarta.validation.Valid;
 
@@ -29,7 +30,9 @@ public class AuthenticationController {
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
-	private UserRepository repository;
+	private UserRepository userRepository;
+	@Autowired
+	private ProfessorRepository professorRepository;
 
 	@Autowired
 	TokenService tokenService;
@@ -47,14 +50,14 @@ public class AuthenticationController {
 
 	@PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserCreateDTO data) {
-        Optional<User> isAlreadyCreated = repository.findByNameUser(data.getName());
+        Optional<User> isAlreadyCreated = userRepository.findByNameUser(data.getName());
         if(isAlreadyCreated.isPresent()){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("");
         }else{
 			UserType userType = UserType.fromString(data.getRole());
             String encryptoPassword = new BCryptPasswordEncoder().encode(data.getPassword());
             User newUser = new User(data.getName(),encryptoPassword,userType);
-            repository.save(newUser);
+            userRepository.save(newUser);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
 	}

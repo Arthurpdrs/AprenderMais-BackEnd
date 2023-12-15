@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.AprenderMais.data.dto.ProfessorDTO;
 import br.com.AprenderMais.data.dto.UserDTO;
 import br.com.AprenderMais.services.ProfessorService;
 
@@ -24,22 +25,22 @@ public class UserController {
 	private ProfessorService service;
 	
 	@GetMapping(produces =  MediaType.APPLICATION_JSON_VALUE)
-	public List<UserDTO> findAll(){
+	public List<ProfessorDTO> findAll(){
 		return service.findAll();
 	}
 	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDTO findById(@PathVariable(value = "id") Long id) {
+	public ProfessorDTO findById(@PathVariable(value = "id") Long id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDTO create(@RequestBody UserDTO user) {
+	public ProfessorDTO create(@RequestBody ProfessorDTO user) {
 		return service.create(user);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDTO update(@RequestBody UserDTO user) {
+	public ProfessorDTO update(@RequestBody ProfessorDTO user) {
 		return service.update(user);
 	}
 	
