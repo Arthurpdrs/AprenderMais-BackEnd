@@ -29,14 +29,10 @@ public class SecurityConfigurations {
 	            .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
 	            		.requestMatchers(HttpMethod.POST, "api/auth/login").permitAll()
 	            		.requestMatchers(HttpMethod.POST, "api/auth/register").permitAll()
-	                    .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN") //Permite que usuários com a função "ADMIN" façam requisições POST em todos os endpoints sob "/api/".
-	                    .requestMatchers(HttpMethod.POST, "/api/course").hasRole("PROFESSOR") // Permite que usuários com a função "PROFESSOR" adicionem cursos
-	                    .requestMatchers(HttpMethod.DELETE, "/api/course").hasRole("PROFESSOR") // Permite que usuários com a função "PROFESSOR" removam cursos.
-	                    .requestMatchers(HttpMethod.DELETE, "/api/course/student").hasRole("PROFESSOR") // Permite que usuários com a função "PROFESSOR" removam estudantes de seus cursos.
-	                    .requestMatchers(HttpMethod.GET, "/api/course/students").hasRole("PROFESSOR") // Permite que usuários com a função "PROFESSOR" busquem alunos matriculados nos seus cursos.
-	                    .requestMatchers(HttpMethod.POST, "/api/course/enroll").hasRole("STUDENT") // Permite que usuários com a função "STUDENT" entrem em cursos.
-	                    .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("STUDENT") // Permite que usuários com a função "STUDENT" busquem cursos.
-	                    .requestMatchers(HttpMethod.GET, "/api/professors").hasRole("STUDENT") // Permite que usuários com a função "STUDENT" busquem professores.
+                        .requestMatchers(HttpMethod.POST, "api/classroom").hasRole("ADMIN")
+						.requestMatchers(HttpMethod.DELETE, "api/classroom").hasRole("ADMIN")
+						.requestMatchers(HttpMethod.PUT, "api/classroom").hasRole("ADMIN")
+                        .anyRequest().authenticated()
 	            )
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 	            .build();

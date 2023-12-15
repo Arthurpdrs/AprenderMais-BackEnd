@@ -18,7 +18,6 @@ import br.com.AprenderMais.data.dto.UserCreateDTO;
 import br.com.AprenderMais.infra.security.TokenService;
 import br.com.AprenderMais.model.User;
 import br.com.AprenderMais.model.UserType;
-import br.com.AprenderMais.repositories.ProfessorRepository;
 import br.com.AprenderMais.repositories.UserRepository;
 import jakarta.validation.Valid;
 
@@ -31,8 +30,6 @@ public class AuthenticationController {
 
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private ProfessorRepository professorRepository;
 
 	@Autowired
 	TokenService tokenService;
@@ -58,6 +55,7 @@ public class AuthenticationController {
             String encryptoPassword = new BCryptPasswordEncoder().encode(data.getPassword());
             User newUser = new User(data.getName(),encryptoPassword,userType);
             userRepository.save(newUser);
+		
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
 	}

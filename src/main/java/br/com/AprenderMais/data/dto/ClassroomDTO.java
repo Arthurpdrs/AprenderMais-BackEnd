@@ -11,11 +11,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class ProfessorDTO {
-
+public class ClassroomDTO {
+    
     private Long id;
-    private String occupationArea;
-    private String formationDegree;
-    private String biography;
+
+    private String name;
+    
+    private String description;
+    
+    private String areaClassroom;
+
+    private String url;
 
 }

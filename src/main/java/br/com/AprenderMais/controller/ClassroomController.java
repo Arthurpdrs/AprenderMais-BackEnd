@@ -13,40 +13,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.AprenderMais.data.dto.ProfessorDTO;
-import br.com.AprenderMais.data.dto.UserDTO;
-import br.com.AprenderMais.services.ProfessorService;
+import br.com.AprenderMais.data.dto.ClassroomDTO;
+import br.com.AprenderMais.services.ClassroomService;
 
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/classroom")
+public class ClassroomController {
 	
 	@Autowired
-	private ProfessorService service;
+	private ClassroomService service;
 	
 	@GetMapping(produces =  MediaType.APPLICATION_JSON_VALUE)
-	public List<ProfessorDTO> findAll(){
+	public List<ClassroomDTO> findAll(){
 		return service.findAll();
 	}
 	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ProfessorDTO findById(@PathVariable(value = "id") Long id) {
+	public ClassroomDTO findById(@PathVariable(value = "id") Long id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ProfessorDTO create(@RequestBody ProfessorDTO user) {
+	public ClassroomDTO create(@RequestBody ClassroomDTO user) {
 		return service.create(user);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ProfessorDTO update(@RequestBody ProfessorDTO user) {
+	public ClassroomDTO update(@RequestBody ClassroomDTO user) {
 		return service.update(user);
 	}
 	
 	@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable Long id) {
 		service.delete(id);
-	}
-    
+	}  
 }

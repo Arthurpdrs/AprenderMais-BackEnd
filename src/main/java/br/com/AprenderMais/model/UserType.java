@@ -2,7 +2,7 @@ package br.com.AprenderMais.model;
 
 public enum UserType {
 
-    ADMIN("admin"), PROFESSOR("professor"), STUDENT("student");
+    ADMIN("admin"), USER("user");
 
     private String role;
 
