@@ -14,12 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.AprenderMais.data.dto.AuthenticationDTO;
 import br.com.AprenderMais.data.dto.LoginResponseDTO;
-import br.com.AprenderMais.data.dto.RegisterDTO;
 import br.com.AprenderMais.data.dto.UserCreateDTO;
-import br.com.AprenderMais.data.dto.UserDTO;
-import br.com.AprenderMais.exceptions.RequiredObjectIsNullException;
 import br.com.AprenderMais.infra.security.TokenService;
-import br.com.AprenderMais.mapper.DozerMapperConvert;
 import br.com.AprenderMais.model.User;
 import br.com.AprenderMais.model.UserType;
 import br.com.AprenderMais.repositories.UserRepository;
@@ -39,7 +35,7 @@ public class AuthenticationController {
 	TokenService tokenService;
 
 	@PostMapping("/login")
-	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
+	public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO data) {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.name(), data.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 

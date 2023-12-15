@@ -2,7 +2,6 @@ package br.com.AprenderMais.infra.security;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneOffset;
 
 import org.springframework.beans.factory.annotation.Value;

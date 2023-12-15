@@ -2,10 +2,6 @@ package br.com.AprenderMais.data.dto;
 
 import java.io.Serializable;
 
-import br.com.AprenderMais.model.Admin;
-import br.com.AprenderMais.model.Professor;
-import br.com.AprenderMais.model.Student;
-import br.com.AprenderMais.model.User;
 import br.com.AprenderMais.model.UserType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
