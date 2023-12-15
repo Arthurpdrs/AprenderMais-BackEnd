@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.AprenderMais.data.dto.UserDTO;
-import br.com.AprenderMais.services.UserService;
+import br.com.AprenderMais.services.ProfessorService;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
 	
 	@Autowired
-	private UserService service;
+	private ProfessorService service;
 	
 	@GetMapping(produces =  MediaType.APPLICATION_JSON_VALUE)
 	public List<UserDTO> findAll(){
