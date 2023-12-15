@@ -4,34 +4,22 @@
 
 # Aprender Mais
 
-O Aprender Mais é uma iniciativa desenvolvida como parte da disciplina de Desenvolvimento Web II. Nosso objetivo é criar uma plataforma de educação online inovadora que promova o acesso gratuito a cursos ministrados por voluntários em diversas áreas de conhecimento.
+O Aprender Mais é uma iniciativa desenvolvida como parte da disciplina de Desenvolvimento Web II. Nosso objetivo é criar uma plataforma de educação online inovadora que promova o acesso gratuito a aulas postadas pela plataforma através de adminstradores voluntários em diversas áreas de conhecimento.
 
 ## Objetivos
-
-- **Promover a Educação de Qualidade de Forma Gratuita**: Alinhado com o ODS 4 da ONU, buscamos oferecer educação de qualidade e acessível, contribuindo para o desenvolvimento sustentável global.
 
 - **Facilitar o Acesso à Educação**: Eliminar barreiras tradicionais de acesso à educação, tornando-a acessível independentemente de localização geográfica ou capacidade financeira.
 
 - **Empoderar Educadores Voluntários**: Capacitar indivíduos a compartilhar conhecimento e habilidades como educadores voluntários, alcançando um público mais amplo.
 
-## Propósito
-
-Enfrentando o desafio de oferecer educação de qualidade e acessível, nosso projeto alinha-se ao Objetivo de Desenvolvimento Sustentável das Nações Unidas: Educação de Qualidade (ODS 4). Conectaremos educadores voluntários a alunos interessados, incentivando o aprendizado gratuito e sustentável.
-
-## Destaques
-
-- **Acesso Gratuito a Cursos**: Oferecemos uma variedade de cursos gratuitos para estudantes, profissionais e entusiastas.
-- **Voluntários Educadores**: Capacitamos indivíduos a compartilhar conhecimento como voluntários, ampliando seu alcance.
-- **Sustentabilidade Financeira**: Além de cursos gratuitos, permitimos que educadores vendam ingressos para cursos premium, garantindo a sustentabilidade financeira do projeto.
-
 ## Tecnologias Utilizadas
 - Spring Boot
 - Hibernate
 - MySQL
+- Spring Security
+- Lombok
+- Auth0
 
-## Configuração e Instalação
-### Pré-requisitos:
-- **Java**: Certifique-se de ter o Java JDK instalado. Recomenda-se o Java 17, que é a versão usada no projeto.
 
 ### Passos:
 
